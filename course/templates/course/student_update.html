@@ -1,0 +1,184 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Study Portal {% endblock %}</title>
+        {% load static %}
+        <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Abhaya Libre' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+        <link href="{% static 'css/main.css' %}" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Alfa Slab One' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Ledger' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet'>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <style>
+            a{
+                color: white;
+            }
+            #id_content
+            {
+                width: 600px;
+                height: 40px;
+            }
+            .bg{
+                background:linear-gradient(212.38deg, rgba(238, 244, 234, 0.7) 0%, rgba(rgba(125, 139, 125, 1)) 100%);
+            }
+
+            body
+            {
+               
+                font-family: Ledger;font-size: 20px;
+                background-image: url("{% static 'img/studp.jpg' %}");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                
+            }
+            #header {
+            background: #5fcf80;
+            transition: all 0.5s;
+            z-index: 997;
+            padding: 10px 5px;
+            box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);
+            }
+#navbar{
+  padding:0px;
+  background:#5fcf80;
+}
+
+          input[type=text]
+          {
+          width: 70%;
+          padding: 6px 10px;
+          margin: 2px 0;
+          background: transparent;
+          border: none;
+          outline: none;
+          border-bottom: 2px solid green;
+          color:white;
+}
+#leftbox {
+                float:left; 
+                
+                width:50%;
+                height:100%;
+            }
+#rightbox {
+                float:right; 
+                
+                width:50%;
+                height:100%;
+            }
+
+
+input[type=email]
+          {
+          width: 70%;
+          padding: 6px 10px;
+          margin: 2px 0;
+          background: transparent;
+          border: none;
+          outline: none;
+          border-bottom: 2px solid green;
+          color:white;
+          }
+          .responsive {
+  width: 100%;
+  height: 100%;
+}
+
+            </style>
+    </head>
+    <body background="white" style="font-family: Ledger;font-size: 20px;">
+    <br><br>
+   <nav id="navbar" class="navbar-fixed-top">
+        <div class="container-fluid">
+
+            <!-- Header -->
+            <div class="navbar-header" >
+                        <h1 style="color:white;font-family: Ledger; font-size: 50px"><b>&nbsp;&nbsp;<a href= "{% url 'admin:index' %}"><img src="{% static 'img/logo.png' %}" height=70px width=80px></a>&nbsp; STUDY PORTAL</b> </h1>
+
+            </div>
+
+            <!-- Items -->
+            <div class="collapse navbar-collapse" id="topNavBar" style ="padding-top: 20px;">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <li><a href="{% url 'course:index' %}">Home</a></li>
+                        <li><a href="{% url 'course:studentprofile' user.id %}">Profile</a></li>
+                        <li>
+                        <a href="{% url 'logout_user' %}">
+                             Logout
+                        </a></li>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav><br><br>
+      
+    </div>
+  </header><!-- End Header -->{% load static %}
+  <div class="bg">
+  <br>
+  <br>
+<div class="container">
+ <div class="col-sm-offset-2 col-sm-10 col-md-8" style="background:linear-gradient(212.38deg, rgba(69, 99, 83, 0.8) 0%, rgba(132, 185, 148, 0.8) 100%);color:white"> 
+ 
+{% if profile_updated %}
+<h1>Your profile has been successfully updated</h1>
+{% else %}
+  <div id="rightbox">
+      {% if student.profile_pic %}
+    <img src="{{student.profile_pic.url}}" class="responsive" alt="">
+    {% else %}
+    <img src="{% static 'img/picstu.jpg' %}" alt="">
+    {% endif %}
+
+
+  </div>
+  <div id="leftbox">
+  <h2 style="text-align:center; color:white;font-family: Ledger;"><b>Update Profile</b></h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+   <p style="text-align:center"> <input class="btn btn-success" type="submit" name="" value="Submit" ></p>
+  </form>
+  </div>
+  </div>
+  </div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

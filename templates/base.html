@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title> Home</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Ledger' rel='stylesheet'>
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<style>
+        a{
+                color: white;
+            }
+            #id_content
+            {
+                width: 600px;
+                height: 40px;
+            }
+            .bg{
+                background:linear-gradient(212.38deg, rgba(238, 244, 234, 0.7) 0%, rgba(rgba(125, 139, 125, 1)) 100%);
+            }
+
+            body
+            {
+               
+                font-family: Ledger;
+            }
+            #header {
+  background: #5fcf80;
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 10px 5px;
+  box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);
+}
+#navbar{
+  padding:5px;
+  background:#5fcf80;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5fcf80; 
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+</style>
+
+</head>
+
+<body style="font-family: Ledger;">
+  <nav id="navbar" class="navbar-fixed-top" >
+        <div class="container-fluid">
+
+            <!-- Header -->
+            <div class="navbar-header">
+                        <h1 style="color:white;font-family: Ledger; font-size: 50px"><b>&nbsp;&nbsp;<a href= "{% url 'home' %}"><img src="{% static 'img/logo.png' %}" height=70px width=80px></a>&nbsp; STUDY PORTAL</b> </h1>
+
+            </div>
+
+            <!-- Items -->
+            <div class="collapse navbar-collapse" id="topNavBar" style ="padding-top: 10px;">
+                <ul class="nav navbar-nav navbar-right">
+                        <li ><a href ="{% url 'admin:index' %}" style="font-family: Ledger;font-size: 20px;" title="Admin"><i class='fa fa-user fa-1x'></i></a> </li>
+                         
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                        <li ><a href ="{% url 'register_user' %}" style="font-family: Ledger;font-size: 20px;"><i class='fa fa-sign-in fa-1x'></i> Register</a> </li>
+                         
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+      
+    </div>
+  </header>
+{% block content%}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-content-center align-items-center">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Learning,<br>Sharing,<br>Evolving.</h1>
+	<h2>Encouraging endless curiosity.</h2>
+      <a href="{% url 'login_stud' %}" class="btn-get-started">Log in as Student</a>
+	<a href="{% url 'login_user' %}" class="btn-get-started">Log in as Teacher</a>
+    </div>
+  </section><!-- End Hero -->
+ 
+
+   <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
++
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="{% static 'img/about.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content1" >
+            <h3 style="font-family:Ledger;font-size:30px">Study portal:A platform for students</h3> <br>
+            <p class="fst-italic" style="font-size: 20px;">
+              Study portal is a portal for students and teachers to communicate with each other and share educational resources.
+            </p>
+            <ul style="font-size: 18px;">
+              <i class="bi bi-check-circle green"></i> Find a shared platform for educational resources<br>
+              <i class="bi bi-check-circle"></i> Get access to a virtual classroom <br>
+              <i class="bi bi-check-circle"></i> Clear your doubts with discussions<br>
+		  
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="cl">
+              <h3 style="font-family:Ledger;font-size: 20px;"><b>Join Us Today</b></h3>
+              <p style=" font-size: 20px;">
+                Study Portal is a virtual platform  for students and teachers to meet, share resources and have conversations about education to thrive.
+
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bi bi-journals"></i>
+                    <h4>Sharing Platform</h4><br>
+                    <p>Freely access the study materials and contribute some of your own too for your fellows.</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bi bi-person-workspace"></i>
+                    <h4>Discussion Forum</h4><br>
+                    <p>Clear out your doubts freely and discuss it out with your fellows.</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bi bi-chat-dots-fill"></i>
+                    <h4>Virtual Classroom</h4><br>
+                    <p>Our virtual classroom is all set to let you be a part of us.</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    
+
+
+    <!-- ======= Trainers Section ======= -->
+    <section id="trainers" class="trainers">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{% static 'img/prof1.jpg'%}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Sahadev Regmi</h4>
+                <span>Web Technology</span>
+                <p>
+                  Mr. Sahadev Regmi has been working in the field of web designing and handling for the past 12 years, one of his greatest work is the web site of British Embassy here in Nepal. He is a respectable part of our institution and has been teaching web technology for the past 10 years.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{% static 'img/prof2.jpg'%}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Swasti Gartaula</h4>
+                <span>Cloud Computing</span>
+                <p>
+                  Ms. Swasti Gartaula has immense knowldege in cloud computiing and is part of respected organizations like Deerwalk technologies, F1Soft and TeamOne.She has been with us for the past 6 years and teaches cloud computing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{% static 'img/prof3.jpg'%}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Rishesh Shrestha</h4>
+                <span>Cryptography</span>
+                <p>
+                  Mr. Rishesh Shrestha is a cyber security expert and has been working in 'Center for Cyber Security Research and Innovation Nepal' for 8 years. He has been a part of us since our establishment and teaches cryptography.
+                </p>
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Trainers Section -->
+
+  </main><!-- End #main -->
+ {% endblock content %}
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Study Portal</h3><br>
+            <h3>BIC Educational Institute</h3>
+            <p>
+              New-Baneshwor <br>
+              Kathmandu, Province-3<br>
+              Nepal <br><br>
+              <strong>Phone:</strong> +977 01-4566790<br>
+              <strong>Email:</strong> adminbic@bic.edu.np<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

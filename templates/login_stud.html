@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <section class="login">
+		<div class="login_box">
+			<div class="left">
+				<div class="top_link"><a href="{% url 'course:home' %}" style="font-size:15px"><i class="bi bi-skip-backward-circle-fill" style="color:green;"></i>Return home</a>{% if error_message%}
+					<p style="color:red;font-size:20px;"><br>{{error_message}}</p>
+				{% endif %}</div>
+				<div class="contact">
+      <form class="login-form" role="form" action="{% url 'login_stud' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+      <input id="id_username" maxlength="30" name="username" type="text" placeholder="Username"/>
+      <input id="id_password" maxlength="30" name="password" type="password" placeholder="Password"/>
+      <button class="btn btn-success" style="font-size:15px">Login</button>
+      <p class="message">Not registered? <a href="{% url 'register_user' %}" style="color:green;font-size:15px">Register Now!</a></p>
+    </form>
+  </div>
+			</div>
+			<div class="right2">
+				<div class="right2-text">
+					<h2>Student Login</h2>
+					<h5>Log in as Student</h5>
+				</div>
+				<div class="right2-inductor"><img class="img1" src="assets/img/login.png1" alt=""></div>
+			</div>
+		</div>
+	</section>
+
+{% endblock content %}

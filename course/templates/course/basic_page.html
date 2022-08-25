@@ -1,0 +1,213 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Online Classroom Management System{% endblock %}</title>
+        {% load static %}
+        <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Abhaya Libre' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Alfa Slab One' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Ledger' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <style>
+                        a{
+                color: white;
+            }
+            #id_content
+            {
+                width: 600px;
+                height: 40px;
+            }
+
+            body
+            {
+               
+                font-family: Ledger;font-size: 20px;
+                background:white;
+            }
+            
+
+.container1 {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container1 img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container1 img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+.container2 {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 60%;
+  height: 60%;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container2:hover .image {
+  opacity: 0.3;
+}
+
+.container2:hover .middle {
+  opacity: 1;
+}
+
+.text1 {
+  background-color: #04AA6D;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+            body
+            {
+                background: url('') no-repeat center center fixed;
+                background-size: cover;
+                font-family: Ledger;font-size: 20px;
+            }
+            #header {
+            background: #5fcf80;
+            transition: all 0.5s;
+            z-index: 997;
+            padding: 10px 5px;
+            box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);
+            }
+            #navbar{
+             padding:0px;
+             background:#5fcf80;
+        }
+        #ani
+        {
+            transition: width 2s, height 4s;
+        }
+        #ani:hover {
+            width: 28%;
+            height: 35%;
+        }
+        /* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5fcf80; 
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+.imgi {
+  border-radius: 80%;
+    
+}
+
+
+        </style>
+        <title>Study Portal</title>
+    </head>
+    <body background=""style="font-family: Ledger;font-size: 20px;">
+    <nav  id="navbar" class="navbar-fixed-top ">
+        <div class="container-fluid">
+
+            <!-- Header -->
+            <div class="navbar-header">
+                        <h1 style="color:white;font-family: Ledger; font-size: 50px"><b>&nbsp;&nbsp;<a href= "{% url 'admin:index' %}"><img src="{% static 'img/logo.png' %}" height=70px width=80px></a>&nbsp; STUDY PORTAL</b> </h1>
+
+            </div>
+
+            <!-- Items -->
+            <div class="collapse navbar-collapse" id="topNavBar" style ="padding-top: 20px;">
+                <ul class="nav navbar-nav navbar-right">
+                {% if course.id %}
+                        <li><a href ="{% url 'course:detail' course.id %}">Index</a>
+                {% endif %}
+                        <li><a href="{% url 'course:index' %}">Home</a></li>
+                        <li><a href="{% url 'course:studentprofile' user.id %}">Profile</a></li>
+                        
+                        <li>
+                        <a href="{% url 'logout_user' %}">
+                             Logout
+                        </a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav><br><br>
+      
+    </div>
+  </header><!-- End Header -->
+
+    {% block body %}
+    {% endblock %}
+    </body>
+
+    
+
+
+    </html>

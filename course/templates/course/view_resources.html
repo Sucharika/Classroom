@@ -1,0 +1,74 @@
+{% extends 'course/basic_page.html' %}
+{% block title %}Study Portal</title>{% endblock %}
+{% block course_active %}active{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid songs-container">
+<br>
+    <div class="row">
+    <br><br>
+        <div class="col-sm-6 col-md-3">
+        
+            <div class="thumbnail" style="thumbnail; background: rgba(145, 255, 165, 1.0);
+background: -webkit-linear-gradient(top left, rgba(145, 255, 165, 1.0), rgba(90, 226, 94, 1.0));
+background: -moz-linear-gradient(top left, rgba(145, 255, 165, 1.0), rgba(90, 226, 94, 1.0));
+background: linear-gradient(to bottom right, rgba(145, 255, 165, 1.0), rgba(90, 226, 94, 1.0));">
+                        <a href="{% url 'course:detail' course.id %}">
+                             <img src="{{ course.course_logo.url }}" class="img-responsive">
+                            <!--{{ course.name }}-->
+                        </a>
+
+                        <div class="caption">
+                        <a style="display:block"   href="{% url 'course:detail' course.id %}" >
+                        <span>
+                            <h2>{{ course.code }}</h2>
+                        </span>
+                        </a>
+                            <div style="height: 40px">
+                            <a style="display:block"   href="{% url 'course:detail' course.id %}" >
+                            <span>
+                                <h4>{{ course.name }}</h4>
+                           
+                            </div>
+                            <img src=" {{course.instructor.profile_pic.url}}" class="imgi" width="130" height="100">
+                            </span>
+                            </a>
+                        </div>
+
+                    </div>
+                
+                </div> 
+        
+  
+
+
+        <div class="col-sm-7" style="position:fixed-righ; overflow-y: scroll; height:650px;background:-webkit-linear-gradient(top left, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));
+background: -moz-linear-gradient(top left, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));
+background: linear-gradient(to bottom right, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));color:black;font-family: 'Abhaya Libre';font-size:16px;">
+        <h3 align="center"; style="text-align:center;font-family:Volkhov,cursive;font-size:40px;color: #728892">Resources</h3>
+
+    {% for resource in resources reversed %}
+            <div style="background-color:#fafafa; border-radius:2%;padding:10px; margin:5px">
+        {{ resource.title }}
+        <span style="float:right"> Uploaded by: {{resource.user.username}}</span>
+                <div style="position:right">
+        <h2 ><a href="{{ resource.file_resource.url }}" style="text-align:right;color:green;" title="Download">
+        <i class="fa fa-download" aria-hidden="true"></i>
+        </a>&nbsp;&nbsp; 
+        {% if resource.user_id == request.user.id %}
+        <a href="{% url 'course:editresources' resource.id %}" style="text-align:right;color:green;" title="Edit">
+        <i class="fa fa-pencil-square" aria-hidden="true"></i></a>&nbsp;&nbsp; 
+        </h2>
+        {% endif %}
+                    </div>
+
+            </div>
+    {% endfor %}
+
+        </div>
+</div>
+
+</div>
+<br>
+{% endblock %}

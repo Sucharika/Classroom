@@ -1,0 +1,77 @@
+{% extends 'instructor/instructor_basic_page.html' %}
+{% block course_active %}active{% endblock %}
+
+{% block body %}
+<br>
+<div class="container-fluid">
+
+
+    <div class="row">
+
+        <div class="col-sm-6 col-md-3">
+            <div class="panel panel-default" style="border:0px;">
+
+                <div class="thumbnail" style="background: rgba(145, 255, 165, 1.0);
+background: -webkit-linear-gradient(top left, rgba(145, 255, 165, 1.0), rgba(90, 226, 94, 1.0));
+background: -moz-linear-gradient(top left, rgba(145, 255, 165, 1.0), rgba(90, 226, 94, 1.0));
+background: linear-gradient(to bottom right, rgba(145, 255, 165, 1.0), rgba(90, 226, 94, 1.0)); border:0px;">
+                    <a href="{% url 'instructor:instructor_detail' course.id %}">
+                        {% if course.course_logo %}
+                            <img src="{{ course.course_logo.url }}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    
+                    <h1 align="center">{{ course.code }}<br> <small style="color:White;">{{ course.name }}</small></h1> <br>
+                    <h2 align="center">{{ course.instructor }}</h2>
+                </div>
+            </div>
+            </a>
+        </div>
+
+        <br><br><br>
+        <div class="col-sm-7">
+
+
+                <div class="panel-body"style="background: -webkit-linear-gradient(top left, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));
+background: -moz-linear-gradient(top left, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));
+background: linear-gradient(to bottom right, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));color:black;font-family: 'Abhaya Libre';font-size:16px;">
+<a href="{% url 'instructor:provide_feedback' submission.id %}" style="color:green;" title="Return Back"><i class="fa fa-arrow-circle-left" style="font-size:34px;color:green"></i></a>
+                    <h3 align="center"; style="text-align:center;font-family:Volkhov,cursive;font-size:40px;color: #728892">Edit Feedback</h3>
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+               <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <span class="text-danger small">{{ field.errors }}</span>
+            </div>
+        <label class="control-label col-sm-2">{{ field.label_tag }}</label>
+        <div class="col-sm-5">{{ field }}</div>
+        </div>
+        {% endfor %}
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </form>
+                </div>
+            </div>
+
+
+
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+

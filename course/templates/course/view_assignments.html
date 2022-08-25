@@ -1,0 +1,66 @@
+{% extends 'course/basic_page.html' %}
+{% block title %}Study Portal</title>{% endblock %}
+{% block course_active %}active{% endblock %}
+
+
+{% block body %}
+<br><br> 
+<div class="container-fluid songs-container" >
+
+    <div class="row">
+    <br>
+    <div class="col-sm-6 col-md-3">
+    
+                    <div class="thumbnail" style="background: rgba(145, 255, 165, 1.0);
+background: -webkit-linear-gradient(top left, rgba(145, 255, 165, 1.0), rgba(90, 226, 94, 1.0));
+background: -moz-linear-gradient(top left, rgba(145, 255, 165, 1.0), rgba(90, 226, 94, 1.0));
+background: linear-gradient(to bottom right, rgba(145, 255, 165, 1.0), rgba(90, 226, 94, 1.0));">
+                        <a href="{% url 'course:detail' course.id %}">
+                             <img src="{{ course.course_logo.url }}" class="img-responsive">
+                            <!--{{ course.name }}-->
+                        </a>
+
+                        <div class="caption">
+                        <a style="display:block"   href="{% url 'course:detail' course.id %}" >
+                        <span>
+                            <h2>{{ course.code }}</h2>
+                        </span>
+                        </a>
+                            <div style="height: 40px">
+                            <a style="display:block"   href="{% url 'course:detail' course.id %}" >
+                            <span>
+                                <h4>{{ course.name }}</h4>
+                           
+                            </div>
+                            <img src=" {{course.instructor.profile_pic.url}}" class="imgi" width="130" height="100">
+                            </span>
+                            </a>
+                        </div>
+
+                    </div>
+                
+                </div> 
+
+
+        
+        <div class="col-sm-7" style="align:center; overflow-y: scroll; height:650px;background:-webkit-linear-gradient(top left, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));
+background: -moz-linear-gradient(top left, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));
+background: linear-gradient(to bottom right, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));color:black;font-family: 'Abhaya Libre';font-size:16px;">
+        <h3 align="center"; style="text-align:center;font-family:Volkhov,cursive;font-size:40px;color: #728892">Assignments</h3>
+    {% for assignment in assignments reversed %}
+<div style="background-color:#CDD8CD; border-radius:2%;padding:10px; margin:5px">
+        {{ assignment.description }}<br>
+        Post Time: {{ assignment.post_time }}<br>
+        Deadline: {{ assignment.deadline }}<br><br>
+        <a href="{{ assignment.file.url }}">
+        <button type="submit" class="btn btn-success">Download Assignment</button></a>
+        <a href="{% url 'course:upload_submission' assignment.id %}">
+        <button type="submit" class="btn btn-success">View your Submission</button></a>
+       
+        <br>
+</div>
+    {% endfor %}
+        </div><br><br><br>
+</div>
+</div><br><br><br>
+{% endblock %}

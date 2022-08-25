@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    {% load static %}
+    <!--<link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ledger' rel='stylesheet'>
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}"/>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Frijole' rel='stylesheet'>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!--<script src="{% static 'music/js/main.js' %}"></script>-->
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+body {
+  background-image: url("{% static 'img/bg2.jpg' %}");
+  font-family: Ledger;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+   background-repeat: no-repeat;
+    background-size: 100%,100%;
+}
+input[type=text]{
+  width: 70%;
+  padding: 6px 10px;
+  margin: 2px 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid green;
+  color:white;
+}
+
+input[type=password]{
+  width: 70%;
+  padding: 6px 10px;
+  margin: 2px 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid green;
+  color:white;
+}
+input[type=email]{
+  width: 70%;
+  padding: 6px 10px;
+  margin: 2px 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid green;
+  color:white;
+}
+ #header {
+  background: #5fcf80;
+  transition: all 0.5s;
+  z-index: 990;
+  padding: 10px 5px;
+  box-shadow: 0px 0 18px rgba(60, 66, 59, 0.08);
+}
+#navbar{
+  padding:4px;
+  background:#5fcf80;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5fcf80; 
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+.error{
+        color:red;
+      }
+      .success{
+        color:green;
+
+      }
+
+a:hover{
+    color: green;
+}
+</style>
+
+
+
+<script>
+$('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+</script>
+
+</head>
+
+<nav id="navbar" class="navbar-fixed-top">
+        <div class="container-fluid">
+
+            <!-- Header -->
+            <div class="navbar-header">
+                        <h1 style="color:white;font-family: Ledger; font-size: 50px"><b>&nbsp;&nbsp;<img src="{% static 'img/logo.png' %}" height=70px width=80px>&nbsp;STUDY PORTAL</b> </h1>
+
+            </div>
+
+            
+
+        </div>
+    </nav>
+      
+    </div>
+  </header>
+
+
+
+<br><br><br><br><br><br>
+<div class="col-sm-offset-3 col-sm-8 col-md-5" style="background:linear-gradient(212.38deg, rgba(238, 244, 234, 0.7) 0%, rgba(157, 213, 149, 0.71) 100%)">
+        <div class="top_link"><a href="{% url 'course:home'  %}"  style="color:green;"><i class="bi bi-skip-backward-circle-fill" style="color:green;"></i>Return home</a></div>
+        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <h2 style="text-align:center; color:green; font-family:Ledger"><b>Register Now</b></h2><br>
+        {% if messages %}
+         {% for msg in messages %}  
+        <p class="{{msg.tags}}" style="text-align:center;
+background: -webkit-linear-gradient(top left, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));
+background: -moz-linear-gradient(top left, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));
+background: linear-gradient(to bottom right, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));">{{msg}} </p>
+        {% endfor %}
+        {% endif %}
+        {% for field in user_form %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <span class="text-danger small" style="background: -webkit-linear-gradient(top left, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));
+background: -moz-linear-gradient(top left, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));
+background: linear-gradient(to bottom right, rgba(244, 255, 178, 1.0), rgba(170, 244, 144, 1.0));"><b>{{ field.errors }}</b></span>
+            </div>
+        <label class="control-label col-sm-4" style="color:green; "><b>{{ field.label_tag }}</b></label>
+        <div class="col-sm-5"></b>{{ field }}</b></div>
+        </div>
+        {% endfor %}
+
+        {% for field in student_form %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <span class="text-danger small"><b>{{ field.errors }}</b></span>
+            </div>
+        <label class="control-label col-sm-4" style="color:green;"><b>{{ field.label_tag }}</b></label>
+        <div class="col-sm-5" style="color:green;"><b>{{ field }}</b></div>
+        </div>
+        {% endfor %}
+
+        <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Registration</title>-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body style="background-color: lightblue">-->
+
+<!--<div class="container-fluid">-->
+
+
+    <!--<div>-->
+        <!--<br><br><br><br><br><br><br><br><br><br>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+
+        <!--<div class="col-sm-4">-->
+
+        <!--</div>-->
+        <!--<div class="col-sm-3"style="background-color: white;">-->
+
+    <!--<h3>Choose a username and password</h3>-->
+    <!--{% if error_message %}-->
+        <!--<p><strong>{{ error_message }}</strong></p>-->
+    <!--{% endif %}-->
+        <!--<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">-->
+        <!--{% csrf_token %}-->
+
+
+        <!--{% for field in user_form %}-->
+        <!--<div class="form-group">-->
+            <!--<div class="col-sm-offset-2 col-sm-10">-->
+                <!--<span class="text-danger small">{{ field.errors }}</span>-->
+            <!--</div>-->
+        <!--<label class="control-label col-sm-2">{{ field.label_tag }}</label>-->
+        <!--<div class="col-sm-10">{{ field }}</div>-->
+        <!--</div>-->
+        <!--{% endfor %}-->
+
+        <!--{% for field in student_form %}-->
+        <!--<div class="form-group">-->
+            <!--<div class="col-sm-offset-2 col-sm-10">-->
+                <!--<span class="text-danger small">{{ field.errors }}</span>-->
+            <!--</div>-->
+        <!--<label class="control-label col-sm-2">{{ field.label_tag }}</label>-->
+        <!--<div class="col-sm-10">{{ field }}</div>-->
+        <!--</div>-->
+        <!--{% endfor %}-->
+
+        <!--<div class="form-group">-->
+            <!--<div class="col-sm-offset-2 col-sm-10">-->
+                <!--<button type="submit" class="btn btn-success">Submit</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</form>-->
+
+        <!--</div>-->
+        <!--<div class="col-sm-5">-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
